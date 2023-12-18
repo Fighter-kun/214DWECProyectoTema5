@@ -39,16 +39,39 @@
                 <div class="row">
                     <div class="col">
                         <pre><code class="language-javascript">
-                            function setScrollSpeedPage(speed) {
+                            var velocidad = 5; // Velocidad predeterminada
+                            function setSpeed(speed) {
+                                switch (speed) {
+                                    case 'suave':
+                                        velocidad = 1;
+                                        break;
+                                    case 'normal':
+                                        velocidad = 5;
+                                        break;
+                                    case 'rápido':
+                                        velocidad = 25;
+                                        break;
+                                    default:
+                                        alert("Opción no válida. Se usará la velocidad normal.");
+                                        velocidad = 5;
+                                }
+                                hacerScroll();
+                            }
+
+                            // Obtener todos los párrafos en la página
+                            var parrafos = document.querySelectorAll('.paragraph');
+
+                            // Función para hacer scroll en la página
+                            function hacerScroll() {
                                 // Calcular la nueva posición de scroll
-                                var nuevaPosicion = window.scrollY + speed;
+                                var nuevaPosicion = window.scrollY + velocidad;
 
                                 // Hacer scroll suavemente
                                 window.scrollTo(0, nuevaPosicion);
 
                                 // Llamar recursivamente a la función para un desplazamiento continuo
                                 if (nuevaPosicion < document.body.clientHeight - window.innerHeight) {
-                                    requestAnimationFrame(setScrollSpeedPage);
+                                    requestAnimationFrame(hacerScroll);
                                 }
                             }
                         </code></pre>
