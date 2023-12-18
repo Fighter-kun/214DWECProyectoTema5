@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+        Descripción: CodigoEjercicio5.1
+        Autor: Carlos García Cachón
+        Fecha de creación/modificación: 18/12/2023
+-->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Carlos García Cachón">
+        <meta name="description" content="CodigoEjercicio5.1">
+        <meta name="keywords" content="CodigoEjercicio, 5.1">
+        <meta name="generator" content="Apache NetBeans IDE 19">
+        <meta name="generator" content="60">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Carlos García Cachón</title>
+        <link rel="icon" type="image/jpg" href="../webroot/media/images/favicon.ico"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="../webroot/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+        <style>
+            .col {
+                font-size: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="text-center">
+            <h1>1. Crea una página que muestre una imagen u otra en función del tamaño de la pantalla y los px de alto y de ancho que ocupa la barra de tareas del usuario:</h1>
+        </header>
+        <main>
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col">
+                        <pre><code class="language-javascript">
+                            function updateImageVisibility() {
+                            var largeImage = document.getElementById("largeImage");
+                            var mediumImage = document.getElementById("mediumImage");
+                            var smallImage = document.getElementById("smallImage");
+
+                            // Obtener el ancho de la ventana
+                            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+                            // Determinar el tamaño de la imagen según el ancho de la ventana
+                            if (windowWidth >= 1200) {
+                                largeImage.style.display = "block";
+                                mediumImage.style.display = "none";
+                                smallImage.style.display = "none";
+                            } else if (windowWidth >= 800) {
+                                largeImage.style.display = "none";
+                                mediumImage.style.display = "block";
+                                smallImage.style.display = "none";
+                            } else if (windowWidth >= 600) {
+                                largeImage.style.display = "none";
+                                mediumImage.style.display = "none";
+                                smallImage.style.display = "block";
+                            } else {
+                                // Si ninguna de las condiciones anteriores es verdadera
+                                largeImage.style.display = "none";
+                                mediumImage.style.display = "none";
+                                smallImage.style.display = "none";
+                            }
+
+                        }
+
+                        // Ejecutar la función al cargar la página y al cambiar el tamaño de la ventana
+                        document.addEventListener("DOMContentLoaded", updateImageVisibility);
+                        window.addEventListener("resize", updateImageVisibility);
+                        // Esperar a que el DOM se cargue antes de ejecutar el script
+                        document.addEventListener("DOMContentLoaded", function () {
+                          // Obtengo el tamaño completo de la pantalla
+                          var screenHeight = screen.height - screen.availHeight;
+                          var screenWidth = window.screen.width;
+
+                          // Aqui obtengo la altura sin la barra de tareas
+                          var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+                          let tamañoBarraDeTareas = document.getElementById("tamañoBarraDeTareas");
+                          tamañoBarraDeTareas.innerHTML = "< div>Resolución de la barra de tareas "+ screenHeight + " X " + screenWidth + " px< /div>";
+                        });
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="position-fixed bottom-0 end-0">
+            <div class="row text-center">
+                <div class="footer-item">
+                    <address>© <a href="../../index.html" style="color: white; text-decoration: none; background-color: #666">Carlos García Cachón</a>
+                        IES LOS SAUCES 2023-24 </address>
+                </div>
+                <div class="footer-item">
+                    <a href="../indexProyectoTema5.html" style="color: white; text-decoration: none; background-color: #666">Inicio</a>
+                </div>
+                <div class="footer-item">
+                    <a href="https://github.com/Fighter-kun/214DWECProyectoTema5.git" target="_blank"><img
+                            src="../webroot/media/images/github.png" alt="LogoGitHub" class="pe-5"/></a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    </body>
+
+</html>
